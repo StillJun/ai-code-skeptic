@@ -1,0 +1,103 @@
+{
+  "name": "ai-code-skeptic",
+  "displayName": "AI Code Skeptic",
+  "description": "Distrusts AI-generated code by default. Flags the patterns LLM code most often gets wrong — hallucinated APIs, swallowed errors, injections, leaked secrets — and gives every file a Trust Score.",
+  "version": "2.0.0",
+  "publisher": "stilljun",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Linters",
+    "Programming Languages",
+    "Other"
+  ],
+  "keywords": [
+    "ai",
+    "code review",
+    "security",
+    "linter",
+    "trust score",
+    "skeptic"
+  ],
+  "icon": "media/icon.png",
+  "galleryBanner": {
+    "color": "#0d1117",
+    "theme": "dark"
+  },
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "aiSkeptic.analyzeActive",
+        "title": "AI Skeptic: Analyze current file",
+        "category": "AI Skeptic"
+      },
+      {
+        "command": "aiSkeptic.showReport",
+        "title": "AI Skeptic: Show file report",
+        "category": "AI Skeptic"
+      },
+      {
+        "command": "aiSkeptic.fixAll",
+        "title": "AI Skeptic: Fix all auto-fixable issues",
+        "category": "AI Skeptic"
+      },
+      {
+        "command": "aiSkeptic.toggle",
+        "title": "AI Skeptic: Toggle real-time analysis",
+        "category": "AI Skeptic"
+      }
+    ],
+    "configuration": {
+      "title": "AI Code Skeptic",
+      "properties": {
+        "aiSkeptic.enableOnType": {
+          "type": "boolean",
+          "default": true,
+          "description": "Analyze code while typing (debounced)."
+        },
+        "aiSkeptic.debounceMs": {
+          "type": "number",
+          "default": 400,
+          "description": "Delay before re-analysis while typing, in ms."
+        },
+        "aiSkeptic.minSeverity": {
+          "type": "string",
+          "enum": [
+            "info",
+            "low",
+            "medium",
+            "high",
+            "critical"
+          ],
+          "default": "low",
+          "description": "Minimum severity of findings to display."
+        },
+        "aiSkeptic.disabledRules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "List of rule ids to disable."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "build:core": "tsc -p ./tsconfig.core.json",
+    "test": "node ./out-test/test/run.js"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.9.2",
+    "typescript": "^5.4.5"
+  }
+}
