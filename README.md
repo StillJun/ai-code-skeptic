@@ -1,3 +1,9 @@
+![version](https://img.shields.io/badge/version-2.0.0-3fb950)
+![license](https://img.shields.io/badge/license-MIT-blue)
+![languages](https://img.shields.io/badge/languages-11-58a6ff)
+![rules](https://img.shields.io/badge/rules-30-orange)
+![tests](https://img.shields.io/badge/tests-104%20passing-3fb950)
+
 # 🕵️ AI Code Skeptic
 
 A VS Code extension that **distrusts AI-generated code by default**. It scans your file with a battery of heuristics and highlights the spots where generated code statistically goes wrong — hardcoded secrets, swallowed errors, SQL/command injection, XSS, disabled TLS, unfinished stubs, and more. Every file gets a **Trust Score (0–100)**, and many issues come with a one-click **Quick Fix**.
